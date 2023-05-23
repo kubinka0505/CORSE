@@ -1,0 +1,14 @@
+Windows Registry Editor Version 5.00
+
+; ――――― ;
+
+; "Run as User" by kubinka0505
+; Famous `set __COMPAT_LAYER=RunAsInvoker` line implemented as an extension.
+;
+; Made on 17.05.2023
+; https://github.com/kubinka0505/CORSE
+;
+; ―――-- ;
+;
+; Following keys are removed:
+[-HKEY_CURRENT_USER\Software\Classes\*\Shell\Run_as_User]

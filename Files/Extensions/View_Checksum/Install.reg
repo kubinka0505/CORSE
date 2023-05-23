@@ -1,0 +1,59 @@
+Windows Registry Editor Version 5.00
+
+; ――――― ;
+
+; "View Checksum" by kubinka0505
+; Show certain file checksum as command window with copy prompt.
+;
+; Made on 23.05.2023
+; https://github.com/kubinka0505/CORSE
+;
+; ―――-- ;
+;
+; Following keys are created:
+;
+[-HKEY_CURRENT_USER\Software\Classes\*\Shell\View_Checksum]
+[-HKEY_CURRENT_USER\Software\Classes\*\ContextMenus\View_Checksum]
+;
+; ―――-- ;
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\*\shell\View_Checksum]
+@="&View checksum"
+"MUIVerb"="View checksum"
+"Icon"="CertMGR.dll,-450"
+"MultiSelectModel"="Document"
+"ExtendedSubCommandsKey"="*\\ContextMenus\\View_Checksum"
+
+; ――――――――――――――――――――――――― ;
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\*\ContextMenus\View_Checksum\Shell\01_SHA1]
+@="SHA&-1"
+[HKEY_CURRENT_USER\SOFTWARE\Classes\*\ContextMenus\View_Checksum\Shell\01_SHA1\command]
+@="CMD.exe /c start \"\" PowerShell.exe $Host.UI.RawUI.WindowTitle=(GI '%1').Name; $Hash=(Get-FileHash '%1' -Algorithm SHA1).Hash; echo $Hash`n; if ((Read-Host \"Press ENTER to COPY checksum\") -eq '') {Set-ClipBoard $Hash}"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\*\ContextMenus\View_Checksum\Shell\02_SHA256]
+@="SHA-&256"
+[HKEY_CURRENT_USER\SOFTWARE\Classes\*\ContextMenus\View_Checksum\Shell\02_SHA256\command]
+@="CMD.exe /c start \"\" PowerShell.exe $Host.UI.RawUI.WindowTitle=(GI '%1').Name; $Hash=(Get-FileHash '%1' -Algorithm SHA256).Hash; echo $Hash`n; if ((Read-Host \"Press ENTER to COPY checksum\") -eq '') {Set-ClipBoard $Hash}"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\*\ContextMenus\View_Checksum\Shell\03_SHA384]
+@="SHA-&384"
+[HKEY_CURRENT_USER\SOFTWARE\Classes\*\ContextMenus\View_Checksum\Shell\03_SHA384\command]
+@="CMD.exe /c start \"\" PowerShell.exe $Host.UI.RawUI.WindowTitle=(GI '%1').Name; $Hash=(Get-FileHash '%1' -Algorithm SHA384).Hash; echo $Hash`n; if ((Read-Host \"Press ENTER to COPY checksum\") -eq '') {Set-ClipBoard $Hash}"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\*\ContextMenus\View_Checksum\Shell\04_SHA512]
+@="SHA-&512"
+[HKEY_CURRENT_USER\SOFTWARE\Classes\*\ContextMenus\View_Checksum\Shell\04_SHA512\command]
+@="CMD.exe /c start \"\" PowerShell.exe $Host.UI.RawUI.WindowTitle=(GI '%1').Name; $Hash=(Get-FileHash '%1' -Algorithm SHA512).Hash; echo $Hash`n; if ((Read-Host \"Press ENTER to COPY checksum\") -eq '') {Set-ClipBoard $Hash}"
+
+; ――― ;
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\*\ContextMenus\View_Checksum\Shell\05_SEP_01]
+"CommandFlags"=dword:8
+
+; ――― ;
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\*\ContextMenus\View_Checksum\Shell\06_MD5]
+@="&MD5"
+[HKEY_CURRENT_USER\SOFTWARE\Classes\*\ContextMenus\View_Checksum\Shell\06_MD5\command]
+@="CMD.exe /c start \"\" PowerShell.exe $Host.UI.RawUI.WindowTitle=(GI '%1').Name; $Hash=(Get-FileHash '%1' -Algorithm MD5).Hash; echo $Hash`n; if ((Read-Host \"Press ENTER to COPY checksum\") -eq '') {Set-ClipBoard $Hash}"
