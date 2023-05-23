@@ -1,0 +1,28 @@
+Windows Registry Editor Version 5.00
+
+; ――――― ;
+
+; "Hold Date" by kubinka0505
+; Keeps selected file dates intact BEFORE command prompt window is `Enter`.
+; Does NOT work with files containing apostrophe in name. (')
+;
+; Made on 23.05.2023
+; https://github.com/kubinka0505/CORSE
+;
+; ―――-- ;
+;
+; Following keys are created:
+;
+[-HKEY_CURRENT_USER\Software\Classes\*\Shell\Hold_Date]
+;
+; ―――-- ;
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\*\shell\Hold_Date]
+@="&Hold date..."
+"MUIVerb"="Hold date..."
+"Icon"="TimeDate.cpl,-50"
+;"Icon"="IEFrame.dll,-112"
+"MultiSelectModel"="Player"
+
+[HKEY_CURRENT_USER\SOFTWARE\Classes\*\shell\Hold_Date\command]
+@="CMD.exe /c start \"\" PowerShell.exe $PSDefaultParameterValues['Out-File:Encoding'] = 'utf8'; $File=(GI -LiteralPath '%1'); $Host.UI.RawUI.WindowTitle=$File.Name; echo 'Holding following file dates:'; echo $File.CreationTime $File.LastWriteTime $File.LastAccessTime; if ((Read-Host \"`nPress ENTER to DROP file dates\") -eq '') {(GI -LiteralPath '%1').CreationTime=$File.CreationTime; (GI -LiteralPath '%1').LastWriteTime=$File.LastWriteTime; (GI -LiteralPath '%1').LastAccessTime=$File.LastAccessTime}"

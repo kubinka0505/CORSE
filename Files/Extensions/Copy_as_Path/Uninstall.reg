@@ -1,0 +1,18 @@
+Windows Registry Editor Version 5.00
+
+; ――――― ;
+
+; "Copy as Path" by kubinka0505
+; Copy various path properties of the selected file or directory instantly.
+;
+; Made on 17.05.2023
+; https://github.com/kubinka0505/CORSE
+;
+; ―――-- ;
+;
+; Following keys are created:
+;
+[-HKEY_CURRENT_USER\Software\Classes\*\Shell\Copy_as_Path]
+[-HKEY_CURRENT_USER\Software\Classes\*\ContextMenus\Copy_as_Path]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Background\Shell\Copy_as_Path]
+[-HKEY_CURRENT_USER\Software\Classes\Directory\Shell\Copy_as_Path]

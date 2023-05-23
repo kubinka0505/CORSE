@@ -1,0 +1,16 @@
+Windows Registry Editor Version 5.00
+
+; ――――― ;
+
+; "Copy Contents" by kubinka0505
+; Copies file contents to user clipboard without opening requirement.
+;
+; Made on 22.05.2023
+; https://github.com/kubinka0505/CORSE
+;
+; ―――-- ;
+;
+; Following keys are removed:
+;
+[-HKEY_CURRENT_USER\Software\Classes\*\Shell\Copy_Contents]
+[-HKEY_CURRENT_USER\Software\Classes\*\ContextMenus\Copy_Contents]
